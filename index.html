@@ -1,55 +1,296 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d0d0d">
-<title>EVA PRO — калькулятор стоимости</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#0d0d0d;color:#fff;font-family:Arial,sans-serif;min-height:100vh}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(255,255,255,.012) 2px 4px)}button{font:inherit}.page{max-width:840px;margin:auto;padding:48px 22px 80px}.top{display:flex;align-items:center;gap:12px;margin-bottom:38px}.line{height:1px;background:#2a2a2a;flex:1}.dot{width:9px;height:9px;background:#e30613}.brand{font-size:12px;letter-spacing:3px;color:#aaa;font-weight:700;text-transform:uppercase;white-space:nowrap}.hero{text-align:center;margin-bottom:42px}.tag{display:inline-block;background:#e30613;padding:6px 15px;font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}.hero h1{font-size:clamp(36px,7vw,65px);line-height:.98;margin:20px 0 14px;text-transform:uppercase}.hero h1 span{color:#e30613}.hero p{max-width:550px;margin:auto;color:#aaa;line-height:1.6;font-size:14px}.step{margin:0 0 24px}.step-title{display:flex;align-items:center;gap:12px;color:#777;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:12px}.num{width:25px;height:25px;border:1px solid #e30613;color:#e30613;display:grid;place-items:center}.step-title:after{content:"";height:1px;background:#2a2a2a;flex:1}.card{background:#151515;border:1px solid #2b2b2b;padding:22px}.vehicles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vehicle{border:1px solid #333;background:#1d1d1d;color:#aaa;padding:24px 12px;cursor:pointer;font-weight:700;text-transform:uppercase;letter-spacing:1px}.vehicle b{display:block;font-size:30px;margin-bottom:8px}.vehicle small{display:block;text-transform:none;font-weight:400;color:#777;margin-top:6px}.vehicle.on{border:2px solid #e30613;color:#fff;background:rgba(227,6,19,.07)}.wheel{text-align:center}.wheel-row{display:flex;align-items:center;justify-content:center;gap:22px}.round{width:50px;height:50px;border:1px solid #3a3a3a;background:#202020;color:#fff;font-size:28px;cursor:pointer}.wheel-value{font-size:76px;font-weight:800;min-width:100px}.presets{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}.preset{background:transparent;border:1px solid #3a3a3a;color:#bbb;padding:6px 12px;cursor:pointer}.items{display:grid;gap:9px}.item{display:grid;grid-template-columns:30px 1fr auto;gap:15px;align-items:center;background:#151515;border:1px solid #2b2b2b;padding:18px 20px}.item.on{border-left:3px solid #e30613}.check{width:28px;height:28px;border:1px solid #444;background:#222;cursor:pointer;display:grid;place-items:center}.check.on{background:#e30613;border-color:#e30613}.check.on:after{content:"✓";font-weight:800}.name{font-weight:800;text-transform:uppercase;font-size:14px}.desc{font-size:12px;color:#777;line-height:1.45;margin-top:4px}.right{text-align:right;min-width:128px}.qty{display:flex;align-items:center;justify-content:flex-end;gap:8px}.qbtn{width:29px;height:29px;background:#222;border:1px solid #444;color:#fff;cursor:pointer}.qval{font-size:24px;font-weight:800;min-width:30px;text-align:center}.unit{font-size:11px;color:#777;margin:5px 0}.sub{font-weight:800}.summary{background:#151515;border:1px solid #2b2b2b;border-top:3px solid #e30613;padding:28px}.sumrows{display:grid;gap:9px}.sumrow{display:flex;justify-content:space-between;gap:18px;color:#aaa;font-size:13px}.sumrow strong{color:#fff}.total{border-top:1px solid #333;margin-top:20px;padding-top:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px}.total-label{font-size:11px;letter-spacing:3px;color:#777;text-transform:uppercase}.vat{font-size:11px;color:#777;margin-top:5px}.amount{font-size:clamp(42px,8vw,64px);font-weight:800;color:#35d06f;line-height:1}.actions{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;border-top:1px solid #333;margin-top:22px;padding-top:22px}.main-btn{background:#e30613;border:1px solid #e30613;color:#fff;padding:14px 20px;font-weight:800;text-transform:uppercase;letter-spacing:1px;cursor:pointer}.main-btn:disabled{opacity:.65;cursor:wait}.link-btn{background:transparent;border:0;color:#aaa;text-decoration:underline;cursor:pointer;font-size:12px}.hint{grid-column:1/-1;color:#777;font-size:11px;line-height:1.5}.contact{display:flex;gap:18px;align-items:center;background:#151515;border:1px solid #2b2b2b;border-left:3px solid #e30613;padding:22px}.phone{color:#e30613;font-weight:800;font-size:28px;text-decoration:none}.foot{text-align:center;color:#666;font-size:11px;line-height:1.7;border-top:1px solid #2b2b2b;margin-top:38px;padding-top:22px}.toast{position:fixed;z-index:20;left:50%;bottom:25px;transform:translate(-50%,20px);background:#fff;color:#111;padding:12px 18px;font-weight:700;font-size:13px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:600px){.page{padding:34px 14px 70px}.brand{font-size:9px;letter-spacing:1.5px}.item{grid-template-columns:30px 1fr}.right{grid-column:2}.actions{grid-template-columns:1fr}.main-btn,.link-btn{width:100%}.total{align-items:flex-start;flex-direction:column}.phone{font-size:23px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090a0c">
+  <meta name="description" content="Техническая поддержка EVA PRO: профессиональная диагностика, настройка системы и калькулятор коммерческого предложения.">
+  <title>Ваша техническая поддержка EVA PRO</title>
+  <style>
+    :root{--bg:#08090b;--panel:#111317;--panel2:#17191e;--line:#292c32;--soft:#9b9fa8;--text:#f7f7f8;--red:#e42931;--orange:#f08a1d;--gold:#f4ba15;--ok:#56cf91;--shadow:0 28px 90px rgba(0,0,0,.5)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 0,rgba(228,41,49,.13),transparent 30%),radial-gradient(circle at 90% 8%,rgba(240,138,29,.08),transparent 24%),var(--bg);color:var(--text);font-family:Inter,Manrope,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.17;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
+    button,input,textarea{font:inherit}.shell{width:min(1480px,100%);margin:auto;padding:18px clamp(14px,3vw,46px) 42px;position:relative}
+    header{height:76px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.08);background:rgba(14,15,18,.78);backdrop-filter:blur(22px);border-radius:18px;padding:0 20px;position:sticky;top:12px;z-index:30;box-shadow:0 18px 55px rgba(0,0,0,.22)}
+    .brand{display:flex;align-items:center;gap:15px;min-width:0}.brand img{width:119px;height:auto}.brand-line{width:1px;height:28px;background:var(--line)}.brand-copy b{display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase}.brand-copy span{display:block;color:var(--soft);font-size:11px;margin-top:4px}
+    nav{display:flex;gap:8px}.nav-btn{border:1px solid transparent;background:transparent;color:#aaaeb6;padding:11px 15px;border-radius:12px;cursor:pointer;transition:.25s}.nav-btn:hover,.nav-btn.active{color:#fff;background:#202228;border-color:#32353c;transform:translateY(-1px)}
+    .status{display:flex;align-items:center;gap:8px;font-size:12px;color:#c9ccd2}.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 6px rgba(86,207,145,.09),0 0 18px rgba(86,207,145,.7);animation:pulse 2.2s infinite}
+    main{padding-top:28px}.view{display:none;animation:enter .55s cubic-bezier(.2,.8,.2,1)}.view.active{display:block}
+    .support-grid{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(300px,.52fr);gap:20px;align-items:stretch}.chat-card,.side-card,.calc-card{border:1px solid rgba(255,255,255,.085);background:linear-gradient(155deg,rgba(24,26,31,.94),rgba(12,13,16,.96));box-shadow:var(--shadow);border-radius:25px;overflow:hidden;position:relative}
+    .chat-card:before,.calc-card:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--red),var(--orange),transparent)}
+    .chat-head{padding:25px 28px 20px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.eyebrow{font-size:11px;color:#e6787d;text-transform:uppercase;letter-spacing:.18em;font-weight:750}.chat-head h1,.calc-hero h1{font-size:clamp(25px,3vw,42px);line-height:1.05;letter-spacing:-.045em;margin:8px 0 8px;max-width:760px}.chat-head p,.calc-hero p{margin:0;color:var(--soft);font-size:14px;line-height:1.55}.session-badge{white-space:nowrap;border:1px solid #33363d;background:#15171b;padding:9px 12px;border-radius:999px;color:#aeb2ba;font-size:11px}
+    .messages{height:min(58vh,610px);min-height:420px;overflow-y:auto;padding:28px;scrollbar-width:thin;scrollbar-color:#383b42 transparent}.message{display:flex;gap:12px;margin:0 0 20px;animation:msg .4s ease}.message.user{justify-content:flex-end}.avatar{width:36px;height:36px;flex:0 0 auto;border-radius:12px;background:linear-gradient(145deg,#25272c,#111216);border:1px solid #33363c;display:grid;place-items:center;color:#fff;font-weight:800;font-size:11px;box-shadow:0 8px 20px rgba(0,0,0,.25)}.assistant .avatar{border-color:rgba(228,41,49,.4);color:#ff7479}
+    .bubble{max-width:min(770px,83%);border:1px solid #2b2e34;background:#181a1f;border-radius:5px 18px 18px 18px;padding:15px 17px;line-height:1.58;font-size:14px;color:#e8e9ec}.user .bubble{background:linear-gradient(135deg,#bc2027,#e42931);border-color:#ef4d55;border-radius:18px 5px 18px 18px;color:white}.bubble p{margin:0 0 10px}.bubble p:last-child{margin-bottom:0}.bubble ol,.bubble ul{margin:8px 0 12px;padding-left:21px}.bubble li{margin:7px 0}.bubble strong{color:#fff}.source{margin-top:12px;padding-top:10px;border-top:1px solid #30333a;color:#868b94;font-size:10.5px}.urgent{border-color:rgba(244,186,21,.6);box-shadow:inset 3px 0 0 var(--gold)}
+    .typing{display:flex;gap:5px;align-items:center;height:20px}.typing i{width:6px;height:6px;border-radius:50%;background:#92969f;animation:typing 1.2s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+    .feedback{display:flex;gap:7px;margin-top:12px}.feedback button{border:1px solid #363941;background:#202228;color:#cfd1d6;border-radius:9px;padding:7px 10px;font-size:11px;cursor:pointer}.feedback button:hover{border-color:#5b5f69;color:#fff}
+    .quick{padding:0 28px 18px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.chip{white-space:nowrap;border:1px solid #30333a;background:#17191d;color:#d4d6da;border-radius:999px;padding:9px 12px;font-size:11.5px;cursor:pointer;transition:.2s}.chip:hover{border-color:#e1434a;background:#21171a;transform:translateY(-1px)}
+    .composer{border-top:1px solid var(--line);padding:16px 18px 18px;background:rgba(11,12,14,.76)}.composer-box{display:flex;align-items:flex-end;gap:10px;border:1px solid #34373e;background:#15171b;border-radius:17px;padding:8px 8px 8px 15px;transition:.2s}.composer-box:focus-within{border-color:#6a383b;box-shadow:0 0 0 4px rgba(228,41,49,.08)}textarea{resize:none;min-height:45px;max-height:130px;flex:1;border:0;outline:0;background:transparent;color:#fff;padding:11px 0;line-height:1.4}textarea::placeholder{color:#737780}.send{width:46px;height:46px;border:0;border-radius:13px;color:white;background:linear-gradient(135deg,#f04b52,#bf171f);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 25px rgba(228,41,49,.26);transition:.2s}.send:hover{transform:translateY(-2px) scale(1.02)}.send svg{width:20px}.privacy{padding-top:9px;color:#6f737b;font-size:10.5px;text-align:center}
+    .side{display:flex;flex-direction:column;gap:20px}.side-card{padding:23px}.specialist{min-height:220px;background:radial-gradient(circle at 92% 10%,rgba(228,41,49,.18),transparent 32%),linear-gradient(145deg,#181a1f,#0f1013)}.specialist-top{display:flex;align-items:center;gap:13px}.portrait{width:52px;height:52px;border-radius:18px;background:linear-gradient(145deg,#3d2024,#16171a);border:1px solid #623238;display:grid;place-items:center;font-weight:800;color:#ff777d;position:relative}.portrait:after{content:"";position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;border-radius:50%;background:var(--ok);border:3px solid #17191d}.specialist h3{margin:0 0 5px;font-size:15px}.specialist p{margin:0;color:var(--soft);font-size:12px}.specialist blockquote{margin:22px 0 0;color:#d9dadd;line-height:1.62;font-size:13px;border-left:2px solid var(--red);padding-left:14px}
+    .diagnostic h3,.service h3{margin:0 0 15px;font-size:14px}.steps{list-style:none;padding:0;margin:0}.steps li{display:flex;gap:11px;margin:14px 0;color:#aeb1b8;font-size:12px;line-height:1.5}.steps span{width:23px;height:23px;border-radius:8px;background:#22242a;border:1px solid #35383f;display:grid;place-items:center;flex:0 0 auto;color:#fff;font-size:10px}.calc-link{width:100%;border:1px solid #493235;background:linear-gradient(135deg,#25171a,#18191d);color:#fff;border-radius:16px;padding:16px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.25s}.calc-link:hover{transform:translateY(-2px);border-color:#a33c42}.calc-link b{display:block;font-size:13px}.calc-link small{display:block;color:#9fa3aa;margin-top:4px}
+    .calc-card{padding:30px}.calc-hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding-bottom:26px;border-bottom:1px solid var(--line)}.total-badge{text-align:right;min-width:210px}.total-badge span{display:block;color:#969aa2;font-size:11px;text-transform:uppercase;letter-spacing:.14em}.total-badge b{display:block;color:#fff;font-size:32px;margin-top:6px}.total-badge small{color:#737780}
+    .calc-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;padding-top:26px}.control{background:#14161a;border:1px solid #292c32;border-radius:17px;padding:18px;margin-bottom:14px}.control-head{display:flex;align-items:center;justify-content:space-between;gap:14px}.control h3{font-size:14px;margin:0}.control p{color:#8e929a;font-size:11px;margin:5px 0 0}.stepper{display:flex;align-items:center;gap:13px}.stepper button{width:33px;height:33px;border:1px solid #373a42;background:#202228;color:#fff;border-radius:10px;cursor:pointer}.stepper strong{width:26px;text-align:center}.presets{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.presets button{border:1px solid #30333a;background:#1b1d22;color:#aeb1b8;border-radius:999px;padding:7px 10px;font-size:10px;cursor:pointer}.presets button.active{border-color:#c4343b;color:#fff;background:#2a181b}
+    .product{display:grid;grid-template-columns:42px 1fr auto;gap:13px;align-items:center;border-top:1px solid #272a30;padding:15px 0}.product:first-of-type{margin-top:13px}.switch{width:39px;height:23px;border:0;border-radius:99px;background:#34373d;padding:3px;cursor:pointer}.switch:after{content:"";display:block;width:17px;height:17px;border-radius:50%;background:#8a8e97;transition:.2s}.switch.on{background:#ba242b}.switch.on:after{transform:translateX(16px);background:#fff}.product b{display:block;font-size:12px}.product small{color:#7f838c;font-size:10px}.product-price{text-align:right}.product-price span{display:block;color:#858992;font-size:10px}.product-price strong{font-size:13px}
+    .order{background:#15171b;border:1px solid #2d3036;border-radius:18px;padding:20px;position:sticky;top:112px}.order h3{margin:0 0 15px;font-size:15px}.order input{width:100%;border:1px solid #34373e;background:#101114;color:#fff;border-radius:11px;padding:12px;margin-bottom:14px;outline:0}.order input:focus{border-color:#853c40}.summary-line{display:flex;justify-content:space-between;gap:12px;font-size:11.5px;color:#a5a8af;margin:10px 0}.summary-line.total{padding-top:13px;border-top:1px solid #30333a;color:#fff;font-size:15px;font-weight:800}.pdf{width:100%;margin-top:14px;border:0;border-radius:13px;padding:14px;background:linear-gradient(135deg,#ef444c,#b91920);color:#fff;font-weight:750;cursor:pointer;box-shadow:0 13px 30px rgba(228,41,49,.22);transition:.2s}.pdf:hover{transform:translateY(-2px)}.terms{color:#777b84;font-size:10px;line-height:1.65;margin:14px 0 0;padding-left:17px}.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;background:#f4f4f5;color:#101114;padding:12px 16px;border-radius:12px;font-weight:700;font-size:12px;z-index:100;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+    footer{padding:28px 6px 0;display:flex;justify-content:space-between;gap:20px;color:#666a72;font-size:10px}
+    @keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes msg{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}@keyframes pulse{0%,100%{box-shadow:0 0 0 5px rgba(86,207,145,.08),0 0 14px rgba(86,207,145,.4)}50%{box-shadow:0 0 0 9px rgba(86,207,145,0),0 0 22px rgba(86,207,145,.7)}}
+    @media(max-width:980px){.status,.brand-copy{display:none}.support-grid,.calc-layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr}.order{position:static}.messages{height:55vh}.calc-hero{align-items:flex-start}.total-badge{min-width:auto}}@media(max-width:640px){.shell{padding:10px 10px 24px}header{height:66px;top:7px;padding:0 11px;border-radius:15px}.brand img{width:94px}.brand-line{display:none}nav{gap:3px}.nav-btn{font-size:0;padding:10px}.nav-btn:before{font-size:17px}.nav-btn[data-view=support]:before{content:"●"}.nav-btn[data-view=calculator]:before{content:"₽"}.support-grid{gap:12px}.chat-card,.side-card,.calc-card{border-radius:18px}.chat-head{padding:20px 18px 16px}.chat-head h1{font-size:27px}.session-badge{display:none}.messages{padding:20px 14px;min-height:390px;height:58vh}.bubble{max-width:88%;font-size:13px}.quick{padding:0 14px 14px}.composer{padding:12px}.side{display:block}.side-card{margin-bottom:12px}.diagnostic{display:none}.calc-card{padding:20px 14px}.calc-hero{display:block}.total-badge{text-align:left;margin-top:18px}.calc-layout{padding-top:18px}.control{padding:15px}.product{grid-template-columns:42px 1fr}.product-price{grid-column:2;text-align:left;margin-top:-6px}.control-head{align-items:flex-start}.stepper{gap:7px}footer{display:block;line-height:1.7}.source{font-size:9.5px}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
 </head>
 <body>
-<main class="page">
-<div class="top"><div class="line"></div><div class="dot"></div><div class="brand">EVA PRO — официальный дистрибьютор</div><div class="dot"></div><div class="line"></div></div>
-<section class="hero"><div class="tag">Калькулятор стоимости</div><h1>Рассчитайте цену<br>для <span>вашего ТС</span></h1><p>Выберите транспортное средство, количество колёс и состав комплекта. Все указанные цены уже включают НДС 22%.</p></section>
-<section class="step"><div class="step-title"><span class="num">1</span>Тип транспортного средства</div><div class="card vehicles"><button class="vehicle on" data-w="6" onclick="pickVehicle(this)"><b>🚛</b>Самосвал<small>6–10 колёс</small></button><button class="vehicle" data-w="18" onclick="pickVehicle(this)"><b>🚚</b>Тягач + прицеп<small>18–22 колеса</small></button></div></section>
-<section class="step"><div class="step-title"><span class="num">2</span>Количество колёс</div><div class="card wheel"><div class="wheel-row"><button class="round" onclick="changeW(-1)">−</button><div class="wheel-value" id="wheelValue">6</div><button class="round" onclick="changeW(1)">+</button></div><div class="presets"><button class="preset" onclick="setW(6)">6</button><button class="preset" onclick="setW(8)">8</button><button class="preset" onclick="setW(10)">10</button><button class="preset" onclick="setW(12)">12</button><button class="preset" onclick="setW(18)">18</button><button class="preset" onclick="setW(20)">20</button><button class="preset" onclick="setW(22)">22</button></div></div></section>
-<section class="step"><div class="step-title"><span class="num">3</span>Состав оборудования</div><div class="items" id="items"></div></section>
-<section class="step"><div class="step-title"><span class="num">4</span>Итоговая стоимость</div><div class="summary"><div class="sumrows" id="sumRows"></div><div class="total"><div><div class="total-label">Итого к оплате</div><div class="vat">цены уже с НДС 22%</div></div><div class="amount" id="amount">—</div></div><div class="actions"><button class="main-btn" id="proposalBtn" onclick="shareProposal()">📄 Сформировать и отправить КП</button><button class="link-btn" onclick="copyLink()">Скопировать ссылку на расчёт</button><div class="hint">На телефоне откроется стандартное меню отправки PDF. Если передача файлов браузером не поддерживается, коммерческое предложение автоматически скачается.</div></div></div></section>
-<section class="step"><div class="contact"><div style="font-size:30px">📞</div><div><div style="font-size:11px;color:#777;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">Вопросы по комплекту</div><a class="phone" href="tel:89262028609">8 (926) 202-86-09</a><div style="color:#aaa;font-size:13px">Всеволод</div></div></div></section>
-<div class="foot">Расчёт является ориентировочным. Точную стоимость и условия поставки уточняйте у менеджера.<br>ООО «Лига выдающихся джентельменов» — официальный дистрибьютор EVA PRO</div>
-</main><div class="toast" id="toast"></div>
-<script>
-const PRODUCTS={mon:{article:'EVA.RSM2',name:'Монитор EVA PRO RSM2',desc:'RS-485, держатель, кабель подключения, встроенная лицензия ПО.',price:39040},blk:{article:'EVA.RP2',name:'Внешний блок EVA PRO RP2',desc:'Комплект с кронштейнами и кабелем подключения.',price:8540},sen:{article:'PRO.S2+_Total',name:'Колёсный модуль EVA PRO S2',desc:'Внутренний модуль с хомутом. Рабочая температура -40°C…+120°C.',price:5490}};
-const state={w:6,q:{mon:1,blk:1,sen:6},on:{mon:true,blk:true,sen:true}};
-const fmt=n=>n.toLocaleString('ru-RU').replace(/\u00a0/g,' ')+' ₽';
-const money=n=>Number(n).toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/\u00a0/g,' ');
-function showToast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>e.classList.remove('show'),2400)}
-function setW(n){state.w=Math.max(1,Math.min(99,n));state.q.sen=state.w;render()}
-function changeW(d){setW(state.w+d)}
-function pickVehicle(b){document.querySelectorAll('.vehicle').forEach(x=>x.classList.remove('on'));b.classList.add('on');setW(+b.dataset.w)}
-function changeQty(k,d){state.q[k]=Math.max(0,Math.min(99,state.q[k]+d));if(k==='sen')state.w=state.q[k];render()}
-function toggle(k){state.on[k]=!state.on[k];render()}
-function totalValue(){return Object.keys(PRODUCTS).reduce((s,k)=>s+(state.on[k]?state.q[k]*PRODUCTS[k].price:0),0)}
-function itemHtml(k){const p=PRODUCTS[k],on=state.on[k],sub=on?state.q[k]*p.price:0;return `<div class="item ${on?'on':''}"><button class="check ${on?'on':''}" onclick="toggle('${k}')"></button><div><div class="name">${p.name}</div><div class="desc">${p.desc}</div></div><div class="right"><div class="qty"><button class="qbtn" onclick="changeQty('${k}',-1)">−</button><span class="qval">${state.q[k]}</span><button class="qbtn" onclick="changeQty('${k}',1)">+</button></div><div class="unit">${fmt(p.price)} / шт.</div><div class="sub">${on&&state.q[k]?fmt(sub):'—'}</div></div></div>`}
-function stateString(){const p=new URLSearchParams();p.set('w',state.w);Object.keys(PRODUCTS).forEach(k=>p.set(k,`${state.on[k]?1:0},${state.q[k]}`));return p.toString()}
-function syncUrl(){if(location.protocol!=='file:')history.replaceState(null,'',location.pathname+location.search+'#'+stateString())}
-function loadState(){const p=new URLSearchParams(location.hash.slice(1));if(!p.size)return;Object.keys(PRODUCTS).forEach(k=>{const v=p.get(k);if(v){const [o,q]=v.split(',');state.on[k]=o==='1';state.q[k]=Math.max(0,Math.min(99,+q||0))}});state.w=state.q.sen}
-function render(){document.getElementById('wheelValue').textContent=state.w;document.getElementById('items').innerHTML=Object.keys(PRODUCTS).map(itemHtml).join('');const rows=[];Object.keys(PRODUCTS).forEach(k=>{if(state.on[k]&&state.q[k])rows.push(`<div class="sumrow"><span>${PRODUCTS[k].name} × ${state.q[k]}</span><strong>${fmt(state.q[k]*PRODUCTS[k].price)}</strong></div>`)});document.getElementById('sumRows').innerHTML=rows.length?rows.join(''):'<div style="color:#777">Выберите хотя бы один компонент</div>';const t=totalValue();document.getElementById('amount').textContent=t?fmt(t):'—';syncUrl()}
-async function copyLink(){syncUrl();try{await navigator.clipboard.writeText(location.href);showToast('Ссылка скопирована')}catch{showToast('Не удалось скопировать ссылку')}}
-function wrapText(ctx,text,x,y,maxWidth,lineHeight,maxLines=99){const words=text.split(/\s+/),lines=[];let line='';for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line);lines.slice(0,maxLines).forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));return Math.min(lines.length,maxLines)*lineHeight}
-function drawCell(ctx,x,y,w,h,text,opt={}){ctx.save();ctx.strokeStyle='#555';ctx.lineWidth=1;ctx.strokeRect(x,y,w,h);ctx.fillStyle=opt.fill||'#111';ctx.textAlign=opt.align||'center';ctx.textBaseline='middle';ctx.font=`${opt.bold?'700':'400'} ${opt.size||20}px Arial`;const tx=opt.align==='left'?x+12:opt.align==='right'?x+w-12:x+w/2;if(opt.wrap){ctx.textBaseline='top';const lines=[];const words=String(text).split(/\s+/);let line='';for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>w-20&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line);const lh=(opt.size||20)*1.22,top=y+(h-lines.length*lh)/2;lines.forEach((l,i)=>ctx.fillText(l,tx,top+i*lh))}else{let fs=opt.size||20;while(fs>11&&ctx.measureText(String(text)).width>w-18){fs--;ctx.font=`${opt.bold?'700':'400'} ${fs}px Arial`}ctx.fillText(String(text),tx,y+h/2)}ctx.restore()}
-function dateRu(){const d=new Date();return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`}
-function makeProposalCanvas(){const c=document.createElement('canvas');c.width=1240;c.height=1754;const x=55,w=1130,ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#102f54';ctx.font='800 46px Arial';ctx.fillText('ЛВД',x,78);ctx.fillStyle='#e27b00';ctx.fillText('●',155,74);ctx.fillStyle='#111';ctx.font='800 38px Arial';ctx.fillText('EVA PRO',195,78);ctx.font='20px Arial';ctx.fillText('ООО «ЛИГА ВЫДАЮЩИХСЯ ДЖЕНТЕЛЬМЕНОВ»',480,45);ctx.font='17px Arial';['e-mail: info@lvd1.ru, тел. +7 (495) 663-58-80','ИНН 7751251681 / КПП 771501001','127106, г. Москва, проезд Гостиничный, д. 4Б, помещ. 1Н/5'].forEach((t,i)=>ctx.fillText(t,480,75+i*26));ctx.fillStyle='#073b6c';ctx.fillRect(x,145,w,54);ctx.fillStyle='#fff';ctx.font='700 23px Arial';ctx.textAlign='center';ctx.fillText('СИСТЕМА МОНИТОРИНГА ДАВЛЕНИЯ И ТЕМПЕРАТУРЫ В ШИНАХ EVA PRO',c.width/2,179);ctx.textAlign='left';ctx.fillStyle='#111';ctx.font='700 18px Arial';ctx.fillText('г. Москва',x,235);ctx.textAlign='right';ctx.fillText(dateRu(),x+w,235);ctx.textAlign='center';ctx.font='30px Arial';ctx.fillText('Уважаемый партнёр, предлагаем рассмотреть коммерческое предложение',c.width/2,310);ctx.fillText('на аппаратно-программный комплекс EVA PRO.',c.width/2,348);
-const tableY=400,cols=[48,155,500,115,150,162],headers=['№','Артикул','Наименование товара','Кол-во, шт.','Цена за шт., руб. с НДС','Итого, руб. с НДС'];let cx=x;headers.forEach((h,i)=>{drawCell(ctx,cx,tableY,cols[i],72,h,{bold:true,size:16,wrap:true});cx+=cols[i]});const selected=Object.keys(PRODUCTS).filter(k=>state.on[k]&&state.q[k]);let y=tableY+72;selected.forEach((k,idx)=>{const p=PRODUCTS[k],rowH=125;cx=x;drawCell(ctx,cx,y,cols[0],rowH,idx+1,{size:20});cx+=cols[0];drawCell(ctx,cx,y,cols[1],rowH,p.article,{size:17});cx+=cols[1];drawCell(ctx,cx,y,cols[2],rowH,p.name+' — '+p.desc,{size:17,wrap:true});cx+=cols[2];drawCell(ctx,cx,y,cols[3],rowH,state.q[k],{size:22});cx+=cols[3];drawCell(ctx,cx,y,cols[4],rowH,money(p.price),{size:18});cx+=cols[4];drawCell(ctx,cx,y,cols[5],rowH,money(state.q[k]*p.price),{bold:true,size:19});y+=rowH});const total=totalValue(),vat=Math.round(total*22/122*100)/100;drawCell(ctx,x,y,cols.slice(0,5).reduce((a,b)=>a+b,0),58,'Итого:',{bold:true,size:22,align:'right'});drawCell(ctx,x+cols.slice(0,5).reduce((a,b)=>a+b,0),y,cols[5],58,money(total),{bold:true,size:20});y+=58;drawCell(ctx,x,y,cols.slice(0,5).reduce((a,b)=>a+b,0),58,'В том числе НДС 22%:',{bold:true,size:20,align:'right'});drawCell(ctx,x+cols.slice(0,5).reduce((a,b)=>a+b,0),y,cols[5],58,money(vat),{bold:true,size:19});y+=90;ctx.textAlign='left';ctx.fillStyle='#111';ctx.font='20px Arial';const terms=[['Условия оплаты:','100% предоплата'],['Гарантия на оборудование:','2 года с момента поставки'],['Доступ в личный кабинет:','облачная версия включена в стоимость оборудования'],['Стоимость доставки:','доставка за счёт продавца'],['Техническая поддержка:','доступ в группу знаний включён в стоимость'],['Шеф-монтаж и обучение:','выезд оплачивается отдельно'],['Срок действия КП:','14 дней']];terms.forEach(([a,b])=>{ctx.font='20px Arial';ctx.fillText(a,x,y);ctx.font='700 20px Arial';ctx.fillText(b,x+270,y);y+=38});ctx.font='16px Arial';ctx.fillStyle='#555';wrapText(ctx,'Коммерческое предложение сформировано автоматически по выбранной конфигурации. Для согласования сроков поставки и окончательных условий свяжитесь с менеджером.',x,y+25,w,24,3);ctx.fillStyle='#111';ctx.font='18px Arial';ctx.fillText('Генеральный директор',x+100,1640);ctx.beginPath();ctx.moveTo(x+320,1642);ctx.lineTo(x+720,1642);ctx.strokeStyle='#333';ctx.stroke();ctx.fillText('(Пермяков М.Н.)',x+740,1640);ctx.fillStyle='#073b6c';ctx.fillRect(x,1692,w,6);return c}
-function bytes(s){return new TextEncoder().encode(s)}function join(chunks){let n=chunks.reduce((a,b)=>a+b.length,0),o=new Uint8Array(n),p=0;chunks.forEach(b=>{o.set(b,p);p+=b.length});return o}
-function jpegPdf(jpeg,width,height){const chunks=[],offs=[0];let pos=0;const put=b=>{if(typeof b==='string')b=bytes(b);chunks.push(b);pos+=b.length},obj=n=>{offs[n]=pos;put(`${n} 0 obj\n`)};put(bytes('%PDF-1.4\n%\xFF\xFF\xFF\xFF\n'));obj(1);put('<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');obj(2);put('<< /Type /Pages /Count 1 /Kids [3 0 R] >>\nendobj\n');obj(3);put('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im 4 0 R >> >> /Contents 5 0 R >>\nendobj\n');obj(4);put(`<< /Type /XObject /Subtype /Image /Width ${width} /Height ${height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>\nstream\n`);put(jpeg);put('\nendstream\nendobj\n');const stream='q\n595.28 0 0 841.89 0 0 cm\n/Im Do\nQ\n';obj(5);put(`<< /Length ${bytes(stream).length} >>\nstream\n${stream}endstream\nendobj\n`);const xr=pos;put('xref\n0 6\n0000000000 65535 f \n');for(let i=1;i<=5;i++)put(String(offs[i]).padStart(10,'0')+' 00000 n \n');put(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xr}\n%%EOF\n`);return join(chunks)}
-async function proposalBlob(){if(!totalValue())throw new Error('Выберите хотя бы один компонент');const c=makeProposalCanvas(),b=await new Promise((r,j)=>c.toBlob(x=>x?r(x):j(new Error('Не удалось создать PDF')),'image/jpeg',.91));return new Blob([jpegPdf(new Uint8Array(await b.arrayBuffer()),c.width,c.height)],{type:'application/pdf'})}
-function filename(){const d=new Date(),ds=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');return `КП_EVA_PRO_${state.on.mon?state.q.mon:0}-${state.on.blk?state.q.blk:0}-${state.on.sen?state.q.sen:0}_${ds}.pdf`}
-function download(b,n){const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}
-async function shareProposal(){const btn=document.getElementById('proposalBtn'),old=btn.textContent;btn.disabled=true;btn.textContent='⏳ Формируем КП...';try{const blob=await proposalBlob(),name=filename(),file=new File([blob],name,{type:'application/pdf'}),payload={title:'Коммерческое предложение EVA PRO',text:`КП EVA PRO. Итог ${fmt(totalValue())}, цены с НДС 22%.`,files:[file]};if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[file]}))){try{await navigator.share(payload);showToast('КП готово к отправке')}catch(e){if(e.name!=='AbortError')throw e}}else{download(blob,name);showToast('КП скачано в PDF')}}catch(e){console.error(e);showToast(e.message||'Не удалось сформировать КП')}finally{btn.disabled=false;btn.textContent=old}}
-loadState();render();
-</script>
-</body></html>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <img src="assets/eva-pro-logo.svg" alt="EVA PRO">
+        <span class="brand-line"></span>
+        <span class="brand-copy"><b>Техническая поддержка</b><span>Система контроля давления и температуры</span></span>
+      </div>
+      <nav aria-label="Разделы">
+        <button class="nav-btn active" data-view="support">Поддержка</button>
+        <button class="nav-btn" data-view="calculator">Калькулятор и КП</button>
+      </nav>
+      <div class="status"><i class="dot"></i>Специалист на связи</div>
+    </header>
+
+    <main>
+      <section class="view active" id="support">
+        <div class="support-grid">
+          <article class="chat-card">
+            <div class="chat-head">
+              <div><span class="eyebrow">EVA PRO · экспертная помощь</span><h1>Ваша техническая поддержка EVA PRO</h1><p>Опишите ситуацию своими словами. Я разберусь в контексте и проведу проверку по шагам.</p></div>
+              <span class="session-badge">Новый диалог</span>
+            </div>
+            <div class="messages" id="messages" aria-live="polite"></div>
+            <div class="quick" id="quick">
+              <button class="chip">Как настроить систему по шагам?</button>
+              <button class="chip">На экране прочерки вместо давления</button>
+              <button class="chip">Не мигает синий индикатор RP2</button>
+              <button class="chip">Как установить датчик S2?</button>
+            </div>
+            <form class="composer" id="chat-form">
+              <div class="composer-box">
+                <textarea id="question" rows="1" maxlength="1200" placeholder="Например: после шиномонтажа пропали данные с заднего левого колеса"></textarea>
+                <button class="send" aria-label="Отправить вопрос"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button>
+              </div>
+              <div class="privacy">История хранится только в текущей вкладке и очищается при закрытии или обновлении страницы.</div>
+            </form>
+          </article>
+          <aside class="side">
+            <section class="side-card specialist">
+              <div class="specialist-top"><div class="portrait">ТП</div><div><h3>Инженер EVA PRO</h3><p>Диагностика · установка · эксплуатация</p></div></div>
+              <blockquote>Я сначала уточню симптомы, затем дам безопасную последовательность действий. Если потребуется, попрошу только те данные, которые реально нужны для следующего шага.</blockquote>
+            </section>
+            <section class="side-card diagnostic">
+              <h3>Для точной диагностики пригодятся</h3>
+              <ol class="steps"><li><span>01</span><div>Модель устройства: RSM2, RP2, S2 или SO1</div></li><li><span>02</span><div>Что видно на экране и какие индикаторы горят</div></li><li><span>03</span><div>Когда появилась проблема и что делали перед этим</div></li></ol>
+            </section>
+            <section class="side-card service">
+              <h3>Подбор оборудования</h3>
+              <button class="calc-link" id="go-calc"><span><b>Рассчитать комплект</b><small>Стоимость и готовое КП в PDF</small></span><span>→</span></button>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="calculator">
+        <article class="calc-card">
+          <div class="calc-hero">
+            <div><span class="eyebrow">Конфигуратор EVA PRO</span><h1>Рассчитайте комплект и сформируйте КП</h1><p>Цены указаны с НДС. Количество датчиков синхронизируется с количеством колёс.</p></div>
+            <div class="total-badge"><span>Итого</span><b id="hero-total">0 ₽</b><small id="hero-vat">в том числе НДС</small></div>
+          </div>
+          <div class="calc-layout">
+            <div>
+              <section class="control">
+                <div class="control-head"><div><h3>Количество контролируемых колёс</h3><p>Выберите типовую конфигурацию или задайте вручную</p></div><div class="stepper"><button type="button" id="wheel-minus">−</button><strong id="wheel-count">6</strong><button type="button" id="wheel-plus">+</button></div></div>
+                <div class="presets" id="presets"></div>
+              </section>
+              <section class="control">
+                <div><h3>Состав комплекта</h3><p>Отключите ненужную позицию или измените количество</p></div>
+                <div id="products"></div>
+              </section>
+            </div>
+            <aside class="order">
+              <h3>Коммерческое предложение</h3>
+              <input id="customer" placeholder="Название компании или клиента">
+              <div id="summary"></div>
+              <button class="pdf" id="make-pdf">Сформировать КП в PDF</button>
+              <ul class="terms"><li>Срок действия КП — 14 дней</li><li>Гарантия — 24 месяца</li><li>Техническая поддержка включена</li></ul>
+            </aside>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer><span>© 2026 EVA PRO · ООО «ЛВД»</span><span>Ответы подготовлены по руководству по эксплуатации, базе «Вопрос–ответ» и презентации EVA PRO 2025.</span></footer>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+  (() => {
+    "use strict";
+    const knowledge = [
+      {id:"setup",keys:"настроить настройка установить запуск с нуля по шагам ввод эксплуатацию система полностью",q:"Как настроить систему EVA PRO?",source:"Руководство, раздел 4; база «Вопрос–ответ»; презентация EVA PRO 2025",answer:`Понимаю: вам нужна полная последовательность от монтажа до проверки. Настройте систему так:
+
+1. **Проверьте комплект.** Сверьте модели RSM2, RP2 и колёсных модулей с проектом автомобиля. Запишите серийные номера и ID датчиков.
+2. **Установите колёсные модули.** Внутренний S2 размещают в глубокой части диска, обычно напротив вентиля. Стрелка направлена наружу от ходовой части, антенна не прижата к ободу.
+3. **Установите RP2.** Выберите открытый участок рамы без металлического экранирования. Закрепите блок, подключите постоянное питание 12–30 В через предохранитель.
+4. **Установите RSM2.** Монитор не должен ограничивать обзор. Подключите штатный кабель: контакт 1 — «+», контакт 2 — GND; при необходимости контакты 3–4 — RS-485.
+5. **Создайте схему автомобиля.** На RSM2 укажите количество осей и колёс, затем назначьте каждой позиции ID соответствующего датчика. Посторонние датчики держите дальше одного метра.
+6. **Задайте пороги.** Укажите рекомендованное давление и пределы предупреждений строго по данным производителя автомобиля или шин.
+7. **Активируйте датчики.** Накачайте колёса и начните движение. Убедитесь, что по каждой позиции появились давление и температура, а синий индикатор RP2 мигает при приёме данных.
+8. **Подключите облачный контроль.** Добавьте транспортное средство в Личном кабинете, проверьте поступление данных и настройте уведомления.
+9. **Зафиксируйте результат.** Сохраните схему колёс, ID датчиков, пороги и серийные номера для обслуживания.
+
+Если напишете тип автомобиля, количество осей/колёс и модели датчиков, я помогу пройти именно вашу конфигурацию.`},
+      {id:"about",keys:"что такое работает система комплекс состав архитектура блоки передача данные облако",q:"Как работает EVA PRO?",source:"Руководство, разделы 1 и 3; презентация EVA PRO 2025",answer:`EVA PRO — аппаратно-программный комплекс контроля давления и температуры в шинах.
+
+Колёсные модули измеряют параметры и передают их по радиоканалу 434 МГц. Внешний блок RP2 принимает и усиливает сигнал. Монитор RSM2 показывает данные водителю, формирует предупреждения и при наличии GSM передаёт информацию в Личный кабинет. Там доступны история, отчёты, уведомления и аналитика.`},
+      {id:"dashes",keys:"прочерки нет данных пропали показания пусто колесо датчик не видит",q:"На экране прочерки вместо давления",source:"База «Вопрос–ответ»; руководство, разделы 4–5",answer:`Понимаю: система включена, но по одному или нескольким колёсам нет значений. Проверьте последовательно:
+
+1. Уточните масштаб: прочерки на одном колесе, одной оси или на всех позициях.
+2. Начните движение и подождите несколько минут — колёсные модули активируются при изменении давления и движении.
+3. Проверьте RP2: правый оранжевый индикатор должен гореть, левый синий — мигать при приёме пакетов.
+4. Сверьте ID датчика в настройках RSM2 с ID модуля именно на этой позиции.
+5. Если проблема появилась после шиномонтажа, проверьте положение и целостность датчика и антенны внутри колеса.
+6. Исключите экранирование RP2 металлом и слишком большое расстояние до колёс.
+
+Напишите, на скольких колёсах прочерки, горит ли оранжевый и мигает ли синий индикатор RP2 — по этим трём признакам я определю следующий шаг.`},
+      {id:"rp2blue",keys:"rp2 синий не мигает сигнал связь потеря принимает индикатор",q:"Не мигает синий индикатор RP2",source:"База «Вопрос–ответ»",answer:`Синий индикатор RP2 мигает в момент приёма данных от колёсных модулей. Если он не мигает:
+
+1. Сначала проверьте правый оранжевый индикатор. Если он не горит, диагностируйте питание 12–30 В, предохранитель, контакт «+» и массу.
+2. Если оранжевый горит, выполните проверку во время движения или после изменения давления — датчики не передают непрерывно в неподвижном состоянии.
+3. Осмотрите место RP2: антенна и задняя часть блока не должны перекрываться металлом.
+4. Проверьте, что колёсные модули установлены, активны и их антенны не повреждены.
+5. Если данные отсутствуют только с дальних колёс, временно проверьте связь при меньшем расстоянии — это поможет отделить проблему размещения от неисправности датчика.
+
+Сообщите, горит ли оранжевый индикатор и проблема касается всех колёс или только части.`},
+      {id:"rp2power",keys:"rp2 питание оранжевый не горит 12 24 30 масса gnd предохранитель",q:"Нет питания RP2",source:"Руководство, таблица 4.2; база «Вопрос–ответ»",answer:`Если оранжевый индикатор RP2 не горит, действуйте безопасно:
+
+1. Отключите питание перед осмотром разъёма.
+2. Проверьте предохранитель и наличие постоянных 12–30 В на линии.
+3. Контакт 1 XP1 — питание «+», контакт 2 — масса GND «−».
+4. Проверьте качество массы на раме или аккумуляторе, отсутствие окисления и повреждения кабеля.
+5. После восстановления соединений подайте питание: правый оранжевый индикатор должен загореться.
+
+Не замыкайте контакты для проверки. Если есть напряжение на разъёме, но индикатор не загорается, зафиксируйте измеренное напряжение и серийный номер RP2 для обращения в сервис.`},
+      {id:"rp2install",keys:"rp2 установить место монтаж крепить рама антенна кронштейн",q:"Как установить RP2?",source:"Руководство, пункты 4.1 и 4.2.6",answer:`Установите RP2 на открытом участке рамы или возле дуги розеток прицепа.
+
+1. Убедитесь, что антенна и задняя часть блока не закрыты плотным металлом.
+2. Закрепите блок на кронштейне двумя самоконтрящимися болтами М6.
+3. Кронштейн закрепите болтами М8 либо подходящими хомутами.
+4. Ориентируйте лицевую сторону с индикаторами в сторону колёс или кабины.
+5. Проложите кабель вдали от горячих и подвижных частей, защитите его от перетирания.
+6. После подключения проверьте оранжевый индикатор питания и мигание синего при приёме данных.`},
+      {id:"s2",keys:"s2 датчик модуль установить внутренний хомут стрелка диск вентиль антенна шиномонтаж",q:"Как установить внутренний модуль S2?",source:"Руководство, пункт 4.2.2; база «Вопрос–ответ»",answer:`Для установки внутреннего S2 потребуется шиномонтаж:
+
+1. Разбортируйте колесо и очистите глубокую часть профиля диска.
+2. Разместите модуль обычно напротив вентиля.
+3. Снимите защитную плёнку со скотча и установите модуль стрелкой наружу — от ходовой части.
+4. Проденьте нержавеющий хомут шириной 12 мм через металлическую скобу.
+5. Затяните его до начала сжатия демпферной зоны: модуль не должен перемещаться.
+6. Убедитесь, что антенна свободна, не прижата к ободу и не попадает под монтажную лопатку.
+7. При бортировании начинайте монтаж при положении датчика примерно «на 6 часов».
+8. После сборки назначьте ID датчика правильной позиции в RSM2 и проверьте появление данных в движении.`},
+      {id:"monitor",keys:"rsm2 монитор установить подключить кабель красный черный rs485 экран",q:"Как установить и подключить RSM2?",source:"Руководство, пункт 4.2.5 и таблица 4.1",answer:`Закрепите RSM2 на штатном держателе в удобном месте, не ограничивающем обзор водителя.
+
+1. Отключите питание автомобиля перед подключением.
+2. Используйте штатный кабель: контакт 1, красный — «+» 12–30 В; контакт 2, чёрный/оплётка — GND.
+3. При использовании проводного интерфейса: контакт 3, белый — RS485A; контакт 4, жёлтый — RS485B.
+4. Установите предохранитель в цепь питания.
+5. После включения создайте схему транспортного средства, назначьте датчики и задайте пороги.
+6. Проверьте читаемость экрана, отсутствие натяжения кабеля и получение данных со всех колёс.`},
+      {id:"wrong",keys:"неверное давление температура неправильно завышено занижено показания отличаются манометр",q:"Неверные показания давления или температуры",source:"База «Вопрос–ответ»; руководство, раздел 5",answer:`Понимаю: показание есть, но кажется неверным. Сначала сравнивайте значения в одинаковых условиях:
+
+1. Сверьте давление поверенным манометром на холодной шине.
+2. Учитывайте, что при движении давление и температура закономерно растут.
+3. Проверьте единицы измерения и правильность назначения датчика позиции колеса.
+4. Сравните несколько соседних колёс одной оси. Одиночное резкое отличие важнее равномерного роста всех колёс.
+5. Осмотрите вентиль и шину на утечку, повреждение, перегрев ступицы или тормозного механизма.
+6. Если расхождение сохраняется на холодной шине, запишите данные EVA PRO, контрольного манометра, температуру среды и ID датчика.
+
+При резком падении давления или высокой температуре остановитесь в безопасном месте и осмотрите колесо.`},
+      {id:"pressure",keys:"низкое давление падает утечка авария тревога спускает колесо",q:"Система сообщает о низком давлении",source:"Руководство, раздел 5; база «Вопрос–ответ»",urgent:true,answer:`Это предупреждение нельзя игнорировать. Снизьте скорость без резких манёвров и остановитесь в безопасном месте.
+
+1. Не продолжайте движение, если давление быстро падает, шина деформирована или слышна утечка.
+2. Осмотрите шину, вентиль и диск без приближения к потенциально повреждённой боковине.
+3. Сверьте показание исправным манометром.
+4. Если давление стабильно и повреждений нет, доведите его до значения производителя автомобиля или шин.
+5. Если падение продолжается, замените колесо или вызовите сервис.
+
+После устранения причины проверьте пороги EVA PRO. Не повышайте порог только для того, чтобы убрать предупреждение.`},
+      {id:"temperature",keys:"высокая температура перегрев горячее тревога шина ступица тормоз",q:"Система сообщает о высокой температуре",source:"Руководство, раздел 5; база «Вопрос–ответ»",urgent:true,answer:`Высокая температура может быть связана с шиной, ступицей или тормозным механизмом. Плавно остановитесь в безопасном месте.
+
+1. Не касайтесь колеса и не охлаждайте его водой — резкий перепад температуры опасен.
+2. Сравните температуру с соседними колёсами той же оси.
+3. Проверьте признаки подклинивания тормоза, проблемы ступицы, недостаточного давления или перегруза.
+4. Дайте узлу остыть и привлеките квалифицированного механика, если отклонение значительное или повторяется.
+5. Продолжать движение можно только после исключения механической причины.
+
+Напишите температуру проблемного и соседнего колеса, давление и условия перед тревогой — движение, торможение, нагрузка.`},
+      {id:"register",keys:"привязать зарегистрировать id датчик колесо позиция назначить",q:"Как зарегистрировать датчик?",source:"Руководство, раздел 4; база «Вопрос–ответ»",answer:`Для привязки колёсного модуля:
+
+1. Откройте на RSM2 схему транспортного средства.
+2. Выберите точную позицию колеса.
+3. Запустите регистрацию и активируйте нужный датчик изменением давления или по предусмотренной процедуре.
+4. Держите посторонние активные датчики дальше одного метра, чтобы не записать чужой ID.
+5. Сверьте появившийся ID с маркировкой датчика.
+6. Сохраните настройки и повторите для остальных позиций.
+7. Начните движение и проверьте, что данные появляются именно на назначенных колёсах.`},
+      {id:"cabinet",keys:"личный кабинет облако telegram почта push отчеты история карта подключить",q:"Как работает Личный кабинет?",source:"Презентация EVA PRO 2025, слайды 17–23",answer:`Личный кабинет показывает транспортные средства в реальном времени, историю событий, отчёты, рейтинг парка, тепловые карты и данные инспекции шин.
+
+Для подключения добавьте транспортное средство по идентификатору оборудования, убедитесь, что RSM2 видит GSM-сеть и передаёт данные, затем настройте получателей уведомлений. Поддерживаются уведомления в Telegram, по электронной почте и через push-канал. Если данные на RSM2 есть, а в кабинете нет, проверьте связь, SIM-карту, время последнего пакета и правильность привязки устройства.`},
+      {id:"load",keys:"нагрузка ось датчик пневмоподвеска калибровка вес масса",q:"Как настроить датчик нагрузки на ось?",source:"Презентация EVA PRO 2025, слайд 16; база «Вопрос–ответ»",answer:`Датчик нагрузки применяется на транспортных средствах с пневматической подвеской.
+
+1. Установите датчик и подключите пневматическую трубку с герметичными фитингами.
+2. Назначьте устройство соответствующей оси в системе.
+3. Выполните калибровку минимум по подтверждённым значениям массы, желательно в нескольких точках нагрузки.
+4. Проверьте отсутствие утечек в пневмолинии.
+5. Сопоставьте показание с контрольным взвешиванием и сохраните коэффициенты.
+
+Не используйте расчётное значение как юридически значимый вес без предусмотренной поверки.`},
+      {id:"specs",keys:"характеристики частота диапазон температура питание гарантия срок",q:"Характеристики и гарантия",source:"Презентация EVA PRO 2025; руководство",answer:`Основные параметры EVA PRO:
+
+• Колёсные модули: радиоканал 434 МГц, рабочая температура от −55 до +120 °C, питание 3–3,7 В.
+• RP2: питание 12–30 В, рабочая температура от −40 до +60 °C.
+• RSM2: питание 12–30 В, рабочая температура от 0 до +60 °C; GSM, GPS, 434 МГц и RS-485.
+• Датчик нагрузки: 434 МГц, от −40 до +80 °C, питание 3,7 В.
+• Гарантия на оборудование в коммерческом предложении — 24 месяца с момента продажи.
+
+Для точной совместимости укажите тип транспортного средства, размер колёс, рабочее давление и требуемое количество точек контроля.`}
+    ];
+    const synonyms={настроить:["установить","запуск","ввод"],пропали:["прочерки","нет","потеря"],датчик:["модуль","сенсор","s2"],репитер:["rp2","внешний"],экран:["монитор","rsm2"],горит:["индикатор","лампочка"],шина:["колесо","покрышка"],спускает:["давление","утечка"],горячее:["температура","перегрев"]};
+    const messages=document.getElementById("messages"), input=document.getElementById("question"), form=document.getElementById("chat-form");
+    const history=[];
+    const escape=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    function format(text){let s=escape(text).replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");const lines=s.split("\n");let out="",list=null;const close=()=>{if(list){out+=`</${list}>`;list=null}};for(const raw of lines){const l=raw.trim();const num=l.match(/^(\d+)\.\s+(.*)$/),bul=l.match(/^[•\-]\s+(.*)$/);if(num){if(list!=="ol"){close();out+="<ol>";list="ol"}out+=`<li>${num[2]}</li>`}else if(bul){if(list!=="ul"){close();out+="<ul>";list="ul"}out+=`<li>${bul[1]}</li>`}else{close();if(l)out+=`<p>${l}</p>`}}close();return out}
+    function add(role,text,meta={}){const row=document.createElement("div");row.className=`message ${role}`;const content=`<div class="bubble ${meta.urgent?"urgent":""}">${format(text)}${meta.source?`<div class="source">Источник: ${escape(meta.source)}</div>`:""}${role==="assistant"&&meta.feedback?`<div class="feedback"><button data-feedback="yes">Да, помогло</button><button data-feedback="more">Нужен следующий шаг</button></div>`:""}</div>`;row.innerHTML=role==="assistant"?`<div class="avatar">EVA</div>${content}`:`${content}`;messages.appendChild(row);messages.scrollTop=messages.scrollHeight;return row}
+    function welcome(){add("assistant","Здравствуйте! Я специалист технической поддержки EVA PRO. Расскажите, что произошло, обычными словами — я уточню только необходимое и помогу пройти проверку по шагам.",{source:"Официальная база знаний EVA PRO"})}
+    function tokenize(s){let arr=s.toLowerCase().replace(/ё/g,"е").replace(/[^a-zа-я0-9]+/g," ").trim().split(/\s+/).filter(x=>x.length>2);for(const [k,v] of Object.entries(synonyms))if(arr.includes(k))arr.push(...v);return [...new Set(arr)]}
+    function find(q){const context=(history.slice(-2).join(" ")+" "+q).toLowerCase();const terms=tokenize(context);let best=null,score=0;for(const e of knowledge){const hay=(e.q+" "+e.keys+" "+e.answer).toLowerCase().replace(/ё/g,"е");let s=0;for(const t of terms){if(e.keys.includes(t))s+=4;if(e.q.toLowerCase().includes(t))s+=3;if(hay.includes(t))s+=1}if(context.includes(e.id))s+=3;if(s>score){score=s;best=e}}return score>=3?best:null}
+    function fallback(q){return `Я понял ваш вопрос: «${q}». Чтобы не дать неточную рекомендацию, уточните, пожалуйста:
+
+1. Какое устройство участвует: RSM2, RP2, S2, SO1 или датчик нагрузки?
+2. Что именно отображается на экране и какие индикаторы горят или мигают?
+3. Проблема на одном колесе, одной оси или на всех позициях?
+4. Что происходило перед появлением симптома: шиномонтаж, настройка, ремонт, длительная стоянка или движение?
+
+После этого я дам конкретную последовательность проверки без лишних действий.`}
+    function typing(){const row=document.createElement("div");row.className="message assistant";row.innerHTML='<div class="avatar">EVA</div><div class="bubble"><div class="typing"><i></i><i></i><i></i></div></div>';messages.appendChild(row);messages.scrollTop=messages.scrollHeight;return row}
+    function ask(text){const q=text.trim();if(!q)return;add("user",q);history.push(q);input.value="";input.style.height="auto";const t=typing();setTimeout(()=>{t.remove();const e=find(q);if(e)add("assistant",e.answer,{source:e.source,urgent:e.urgent,feedback:true});else add("assistant",fallback(q),{source:"Алгоритм первичной диагностики EVA PRO",feedback:true})},520+Math.min(q.length*5,700))}
+    form.addEventListener("submit",e=>{e.preventDefault();ask(input.value)});input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});input.addEventListener("input",()=>{input.style.height="auto";input.style.height=Math.min(input.scrollHeight,130)+"px"});
+    document.getElementById("quick").addEventListener("click",e=>{if(e.target.matches(".chip"))ask(e.target.textContent)});
+    messages.addEventListener("click",e=>{const b=e.target.closest("[data-feedback]");if(!b)return;if(b.dataset.feedback==="yes"){b.parentElement.innerHTML='<span style="color:#77dba2;font-size:11px">Спасибо. Рад, что помог.</span>'}else{ask("Мне нужен следующий шаг по этой проблеме")}})
+    function setView(id){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===id));scrollTo({top:0,behavior:"smooth"})}
+    document.querySelectorAll(".nav-btn").forEach(b=>b.onclick=()=>setView(b.dataset.view));document.getElementById("go-calc").onclick=()=>setView("calculator");welcome();
+
+    const products={mon:{article:"EVA.RSM2",name:"Монитор EVA PRO RSM2",description:"Монитор, держатель, кабель, лицензия ПО",price:39040,qty:1,on:true},blk:{article:"EVA.RP2",name:"Внешний блок EVA PRO RP2",description:"Блок, кронштейн и кабель подключения",price:8540,qty:1,on:true},sen:{article:"PRO.S2+_Total",name:"Колёсный модуль EVA PRO S2",description:"Внутренний модуль с хомутом",price:5490,qty:6,on:true}};
+    let wheels=6;const money=n=>n.toLocaleString("ru-RU")+" ₽";const total=()=>Object.values(products).reduce((s,p)=>s+(p.on?p.qty*p.price:0),0);
+    function renderCalc(){document.getElementById("wheel-count").textContent=wheels;document.getElementById("presets").innerHTML=[6,8,10,12,18,20,22].map(n=>`<button class="${n===wheels?"active":""}" data-n="${n}">${n} кол.</button>`).join("");document.getElementById("products").innerHTML=Object.entries(products).map(([k,p])=>`<div class="product"><button class="switch ${p.on?"on":""}" data-toggle="${k}" aria-label="Включить позицию"></button><div><b>${p.name}</b><small>${p.article} · ${p.description}</small><div class="stepper" style="margin-top:9px"><button data-minus="${k}">−</button><strong>${p.qty}</strong><button data-plus="${k}">+</button></div></div><div class="product-price"><span>${money(p.price)} / шт.</span><strong>${p.on?money(p.price*p.qty):"—"}</strong></div></div>`).join("");const t=total(),vat=Math.round(t*22/122);document.getElementById("hero-total").textContent=money(t);document.getElementById("hero-vat").textContent="в том числе НДС "+money(vat);document.getElementById("summary").innerHTML=Object.values(products).filter(p=>p.on).map(p=>`<div class="summary-line"><span>${p.name} × ${p.qty}</span><b>${money(p.qty*p.price)}</b></div>`).join("")+`<div class="summary-line total"><span>Итого</span><b>${money(t)}</b></div>`}
+    document.getElementById("wheel-minus").onclick=()=>{wheels=Math.max(1,wheels-1);products.sen.qty=wheels;renderCalc()};document.getElementById("wheel-plus").onclick=()=>{wheels=Math.min(99,wheels+1);products.sen.qty=wheels;renderCalc()};document.getElementById("presets").onclick=e=>{const b=e.target.closest("[data-n]");if(b){wheels=+b.dataset.n;products.sen.qty=wheels;renderCalc()}};document.getElementById("products").onclick=e=>{const b=e.target.closest("button");if(!b)return;const k=b.dataset.toggle||b.dataset.minus||b.dataset.plus;if(!k)return;if(b.dataset.toggle)products[k].on=!products[k].on;if(b.dataset.minus)products[k].qty=Math.max(1,products[k].qty-1);if(b.dataset.plus)products[k].qty=Math.min(99,products[k].qty+1);if(k==="sen")wheels=products.sen.qty;renderCalc()};
+    function bytes(s){return new TextEncoder().encode(s)}function join(a){const n=a.reduce((s,x)=>s+x.length,0),r=new Uint8Array(n);let o=0;a.forEach(x=>{r.set(x,o);o+=x.length});return r}function jpegPdf(j,w,h){const c=[],off=[0];let pos=0;const put=v=>{const d=typeof v==="string"?bytes(v):v;c.push(d);pos+=d.length},obj=n=>{off[n]=pos;put(`${n} 0 obj\n`)};put(bytes("%PDF-1.4\n%ÿÿÿÿ\n"));obj(1);put("<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");obj(2);put("<< /Type /Pages /Count 1 /Kids [3 0 R] >>\nendobj\n");obj(3);put("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im 4 0 R >> >> /Contents 5 0 R >>\nendobj\n");obj(4);put(`<< /Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${j.length} >>\nstream\n`);put(j);put("\nendstream\nendobj\n");const st="q\n595.28 0 0 841.89 0 0 cm\n/Im Do\nQ\n";obj(5);put(`<< /Length ${bytes(st).length} >>\nstream\n${st}endstream\nendobj\n`);const x=pos;put("xref\n0 6\n0000000000 65535 f \n");for(let i=1;i<=5;i++)put(`${String(off[i]).padStart(10,"0")} 00000 n \n`);put(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${x}\n%%EOF\n`);return join(c)}
+    function wrap(ctx,text,x,y,max,line,maxLines=3){const words=text.split(" ");let current="",i=0;for(const word of words){const test=current+word+" ";if(ctx.measureText(test).width>max&&current){ctx.fillText(current.trim(),x,y+i*line);current=word+" ";if(++i>=maxLines)return}else current=test}if(i<maxLines)ctx.fillText(current.trim(),x,y+i*line)}
+    async function makePdf(){const lines=Object.values(products).filter(p=>p.on).map(p=>({article:p.article,name:p.name,quantity:p.qty,price:p.price}));if(!lines.length)return toast("Добавьте хотя бы одну позицию");const canvas=document.createElement("canvas");canvas.width=1240;canvas.height=1754;const c=canvas.getContext("2d"),left=58,width=1124,t=total(),vat=Math.round(t*22/122);c.fillStyle="#fff";c.fillRect(0,0,1240,1754);c.fillStyle="#171a1d";c.font="800 48px Arial";c.fillText("EVA",left,84);c.fillStyle="#e42931";c.fillText("PRO",left+108,84);c.fillStyle="#171a1d";c.font="700 20px Arial";c.fillText("ООО «ЛВД»",760,43);c.font="17px Arial";["info@lvd1.ru · +7 (495) 663-58-80","ИНН 7751251681 / КПП 771501001","127106, г. Москва, проезд Гостиничный, д. 4Б"].forEach((x,i)=>c.fillText(x,760,70+i*25));c.fillStyle="#171a1d";c.fillRect(left,146,width,58);c.fillStyle="#fff";c.font="700 22px Arial";c.textAlign="center";c.fillText("СИСТЕМА КОНТРОЛЯ ДАВЛЕНИЯ И ТЕМПЕРАТУРЫ В ШИНАХ EVA PRO",620,182);c.textAlign="left";c.fillStyle="#171a1d";c.font="18px Arial";c.fillText("г. Москва",left,244);c.textAlign="right";c.fillText(new Date().toLocaleDateString("ru-RU"),left+width,244);c.textAlign="left";c.font="700 29px Arial";c.fillText("Коммерческое предложение",left,310);c.fillStyle="#5f6872";c.font="19px Arial";c.fillText(document.getElementById("customer").value.trim()?`Для: ${document.getElementById("customer").value.trim()}`:"Для партнёра ООО «ЛВД»",left,346);const cols=[48,160,430,120,165,201],heads=["№","Артикул","Наименование","Кол-во","Цена с НДС","Сумма с НДС"];let y=392,x=left;c.strokeStyle="#cbd1d6";heads.forEach((h,i)=>{c.fillStyle="#f2f4f5";c.fillRect(x,y,cols[i],70);c.strokeRect(x,y,cols[i],70);c.fillStyle="#171a1d";c.font="700 16px Arial";c.textAlign="center";wrap(c,h,x+cols[i]/2,y+29,cols[i]-14,19,2);x+=cols[i]});y+=70;lines.forEach((p,i)=>{x=left;[String(i+1),p.article,p.name,String(p.quantity),p.price.toLocaleString("ru-RU"),(p.price*p.quantity).toLocaleString("ru-RU")].forEach((v,j)=>{c.strokeRect(x,y,cols[j],112);c.fillStyle="#171a1d";c.font=`${j===5?"700":"400"} 17px Arial`;c.textAlign=j===2?"left":"center";wrap(c,v,j===2?x+15:x+cols[j]/2,y+38,cols[j]-24,23,3);x+=cols[j]});y+=112});c.textAlign="right";c.fillStyle="#171a1d";c.font="700 21px Arial";c.fillText("Итого:",left+880,y+46);c.fillStyle="#e42931";c.font="800 25px Arial";c.fillText(money(t),left+width,y+46);c.fillStyle="#5f6872";c.font="18px Arial";c.fillText("В том числе НДС 22%: "+money(vat),left+width,y+82);y+=142;c.textAlign="left";c.fillStyle="#171a1d";[["Условия оплаты:","100% предоплата"],["Гарантия:","24 месяца с момента продажи"],["Личный кабинет:","облачная версия включена в стоимость"],["Доставка:","за счёт продавца"],["Техническая поддержка:","включена в стоимость"],["Срок действия КП:","14 дней"]].forEach(a=>{c.font="18px Arial";c.fillText(a[0],left,y);c.font="700 18px Arial";c.fillText(a[1],left+290,y);y+=37});c.fillStyle="#f6f7f8";c.fillRect(left,y+18,width,108);c.fillStyle="#5f6872";c.font="16px Arial";wrap(c,"Расчёт сформирован автоматически. Окончательные сроки поставки и состав монтажных материалов согласовываются с менеджером.",left+24,y+52,width-48,24,3);c.fillStyle="#e42931";c.fillRect(left,1692,width,7);const jpeg=await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(new Error("PDF не сформирован")),"image/jpeg",.94));const blob=new Blob([jpegPdf(new Uint8Array(await jpeg.arrayBuffer()),1240,1754)],{type:"application/pdf"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`КП_EVA_PRO_${new Date().toISOString().slice(0,10)}.pdf`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("КП скачано в PDF")}
+    function toast(s){const t=document.getElementById("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)}document.getElementById("make-pdf").onclick=()=>makePdf().catch(e=>toast(e.message||"Не удалось сформировать КП"));renderCalc();
+  })();
+  </script>
+</body>
+</html>
