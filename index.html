@@ -74,6 +74,7 @@
               <button class="chip">На экране прочерки вместо давления</button>
               <button class="chip">Не мигает синий индикатор RP2</button>
               <button class="chip">Как установить датчик S2?</button>
+              <button class="chip">Сколько датчиков нагрузки нужно?</button>
             </div>
             <form class="composer" id="chat-form">
               <div class="composer-box">
@@ -257,6 +258,7 @@
       }
 ];
     const faqEntries=[{"id":"about","keys":"что такое апк eva pro ева про назначение работает система передает данные радиоканал 434","q":"Что такое АПК EVA PRO и как работает система?","source":"База частых вопросов EVA PRO; инструкция EVA PRO V4_25 (2025)","answer":"EVA PRO — аппаратно-программный комплекс для контроля давления и температуры в шинах, а при наличии датчиков — нагрузки на оси.\n\n1. Колёсные модули измеряют давление и температуру.\n2. Данные передаются по радиоканалу 434 МГц на внешний блок RP2.\n3. RP2 передаёт информацию на монитор RSM2 в кабине.\n4. Монитор показывает состояние колёс водителю и при наличии сотовой связи отправляет данные на сервер.\n5. В Личном кабинете можно контролировать транспортные средства, события и историю показаний."},{"id":"rp2-power","keys":"питание внешний блок rp2 репитер запитать подключить плюс масса аккумулятор 12 30 предохранитель","q":"Как подключить питание внешнего блока RP2?","source":"База частых вопросов EVA PRO; инструкция EVA PRO V4_25 (2025), пункт 1.1","answer":"Понял задачу. Подключайте питание RP2 по порядку.\n\n1. Убедитесь, что напряжение бортовой сети находится в диапазоне 12–30 В.\n2. Подключите плюс к постоянному питанию или аккумулятору через штатный предохранитель.\n3. Массу подключите к надёжной точке рамы либо непосредственно к аккумулятору.\n4. Проверьте мультиметром напряжение непосредственно на разъёме RP2.\n5. Соедините разъём: правый оранжевый индикатор должен загореться.\n\nНе используйте соединение типа «врезка-скрутка». Если питание на разъёме есть, а индикатор не горит, блок требуется передать на диагностику."},{"id":"rp2-leds","keys":"индикаторы rp2 репитер внешний блок лампочки светодиоды оранжевый синий значение","q":"Что означают индикаторы на внешнем блоке?","source":"База частых вопросов EVA PRO","answer":"На RP2 используются два основных индикатора.\n\n1. Правый оранжевый индикатор показывает наличие питания.\n2. Левый синий индикатор меняет состояние или мигает при приёме данных от колёсных модулей.\n3. Если оранжевый не горит, сначала проверяйте питание, предохранитель, плюс, массу и кабель.\n4. Если оранжевый горит, но синий не мигает, проверяйте размещение RP2, металлическое экранирование и прохождение сигнала от датчиков."},{"id":"s2-install","keys":"установить колесный модуль датчик сенсор s2 внутри колеса диск хомут вентиль антенна","q":"Как установить колёсный модуль S2?","source":"База частых вопросов EVA PRO; руководство, пункт 4.2.2","answer":"Устанавливайте внутренний модуль только при разобранном колесе.\n\n1. Разбортируйте колесо.\n2. Разместите S2 в самой глубокой части профиля диска, обычно напротив вентиля.\n3. Ориентируйте модуль по маркировке и проденьте хомут через крепёжную скобу.\n4. Затяните хомут до надёжной фиксации без чрезмерного усилия: модуль не должен перемещаться.\n5. Убедитесь, что антенна свободно находится внутри колеса и не прижата к ободу.\n6. После сборки и накачки подождите до 2 минут для активации модуля."},{"id":"tire-mount","keys":"бортировать шиномонтаж колесо датчик сенсор антенна лопатка 6 часов монтаж шины","q":"Как правильно бортировать колесо с датчиком?","source":"База частых вопросов EVA PRO; руководство, примечания к разделу 4","answer":"Чтобы не повредить датчик, соблюдайте положение модуля при шиномонтаже.\n\n1. Перед монтажом отметьте место установки датчика.\n2. Начинайте заброс борта шины, когда датчик находится в нижней точке — примерно «на 6 часов».\n3. Не допускайте контакта монтажной лопатки и борта шины с корпусом модуля.\n4. При монтаже второго борта контролируйте антенну: она не должна быть прижата к ободу.\n5. После сборки убедитесь, что модуль передаёт данные.\n\nМеханическое повреждение корпуса или антенны не относится к гарантийному случаю."},{"id":"monitor-off","keys":"монитор rsm2 дисплей экран не включается черный нет питания предохранитель контакты","q":"Что делать, если монитор не включается?","source":"База частых вопросов EVA PRO; руководство, пункты 7.3–7.5","answer":"Понимаю: монитор не запускается. Проверьте питание последовательно.\n\n1. Измерьте напряжение на разъёме RSM2 — требуется 12–30 В.\n2. Проверьте целостность предохранителя.\n3. Проверьте надёжность плюсового контакта и массы.\n4. Осмотрите штатный кабель и разъём на повреждения и неплотное соединение.\n5. Повторно подайте питание.\n\nЕсли напряжение на разъёме присутствует, а экран остаётся чёрным, монитор требуется передать на диагностику. Самостоятельно вскрывать устройство нельзя."},{"id":"rp2-no-orange","keys":"rp2 внешний блок репитер не горит оранжевый индикатор лампочка нет питания","q":"На внешнем блоке не горит оранжевый индикатор","source":"База частых вопросов EVA PRO; руководство, таблица 4.2","answer":"Оранжевый индикатор подтверждает питание RP2.\n\n1. Проверьте предохранитель на кабеле питания блока.\n2. Измерьте мультиметром напряжение 12–30 В непосредственно на разъёме.\n3. Проверьте плюсовую клемму, точку массы и целостность кабеля.\n4. Устраните окисление или неплотный контакт и повторно подключите разъём.\n5. Если питание корректное, а индикатор не загорается, передайте RP2 на диагностику."},{"id":"rp2-no-blue","keys":"rp2 внешний блок репитер не мигает синий индикатор не принимает данные сигнал датчики металл","q":"Внешний блок не принимает данные, синий индикатор не мигает","source":"База частых вопросов EVA PRO; инструкция EVA PRO V4_25 (2025), раздел 5","answer":"Понимаю: питание блока может быть исправно, но радиоданные не принимаются.\n\n1. Убедитесь, что оранжевый индикатор RP2 горит.\n2. Проверьте, что блок не закрыт плотным металлом и его лицевая сторона направлена к колёсам или кабине.\n3. Поднесите сервисный прибор LF к известному исправному датчику и выберите «Разбудить».\n4. Наблюдайте за синим индикатором RP2: он должен менять состояние при каждой передаче.\n5. Если LF видит ID и показания датчика, но синий индикатор не реагирует даже рядом с блоком, RP2 или его радиоканал требуют диагностики."},{"id":"sealant","keys":"герметик антипрокол химия ремонтная жидкость шина датчик модуль s2 можно использовать","q":"Можно ли использовать герметик для шин?","source":"База частых вопросов EVA PRO; инструкция EVA PRO V4_25 (2025)","answer":"Нет. Химические герметики, составы «антипрокол» и другие ремонтные жидкости внутри шины могут повредить колёсный модуль, чувствительные элементы и антенну.\n\n1. Не заливайте состав в колесо с внутренним модулем EVA PRO.\n2. Для ремонта снимите шину и устраните повреждение штатным способом.\n3. Если герметик уже использован, снимите колесо, очистите внутреннюю поверхность и осмотрите модуль.\n4. При нестабильных показаниях передайте датчик на диагностику.\n\nХимическое повреждение не относится к штатным условиям эксплуатации."},{"id":"cabinet-update-frequency","keys":"личный кабинет лк lk данные обновляются частота интервал сервер 6 минут задержка старая информация","q":"Как часто обновляются данные в Личном кабинете?","source":"База частых вопросов EVA PRO; инструкция EVA PRO V4_25 (2025), раздел 2","answer":"При наличии сотовой связи данные от RSM2 поступают в Личный кабинет ориентировочно каждые 6 минут.\n\nЕсли информация не обновляется:\n1. На мониторе откройте «Информация о системе».\n2. Проверьте оператора, статус сотовой сети и уровень сигнала.\n3. Убедитесь, что транспортное средство привязано к нужной компании и подразделению.\n4. После восстановления связи дождитесь следующего шестиминутного цикла.\n5. Если обновления нет, сообщите инженеру серийный номер RSM2, время последней записи и статус сети."}];
+    knowledge.push({"id":"axle-count","keys":"расчет рассчитать рассчитать количество датчиков нагрузки на ось ls3 ls3s контуры уровни пола подъемные оси тягач полуприцеп ман man","q":"Как рассчитать нужное количество датчиков нагрузки на ось?","source":"Чек-лист расчёта датчиков нагрузки EVA PRO","answer":"Количество независимых контуров равно количеству датчиков. Нажмите «Сколько датчиков нагрузки нужно?» — Эван последовательно уточнит марку и модель тягача и полуприцепа, уровни пола и независимость левой и правой сторон, затем подъёмные оси. После ответов сформируется предварительный расчёт. Подъёмная ось в общем контуре не требует отдельного датчика для повторного измерения того же контура."});
     knowledge.push(...faqEntries);
     const faqAliases={"about":["Что такое АПК EVA PRO?","Что представляет собой ЕВА ПРО?","Для чего нужна система контроля EVA PRO?","Как работает система EVA PRO?","Как система передаёт показания?"],"rp2":["Где устанавливать внешний блок (репитер)?","Куда поставить репитер?","Где закрепить внешний блок RP2?","Как правильно ориентировать ретранслятор?"],"rp2-power":["Как подключить питание внешнего блока?","Как запитать внешний блок?","Как запитать репитер?","Куда подключить плюс и массу RP2?"],"rp2-leds":["Что означают индикаторы на внешнем блоке?","Что показывают лампочки на репитере?","Что означает синий и оранжевый светодиод RP2?"],"monitor":["Как установить монитор в кабине?","Куда поставить дисплей RSM2?","Как подключить экран EVA PRO в машине?"],"s2-install":["Как установить колесный модуль (датчик)?","Куда ставится датчик внутри колеса?","Как закрепить сенсор S2 на диске?"],"tire-mount":["Как правильно бортировать колесо с датчиком?","Как шиномонтировать колесо с сенсором?","Как не сломать антенну при шиномонтаже?"],"register":["Как зарегистрировать датчики в мониторе?","Как привязать датчик к колесу?","Как добавить ID колесного модуля?"],"load":["Как настроить контроль нагрузки на ось?","Как подключить датчик нагрузки?","Как откалибровать вес по осям?"],"monitor-off":["Что делать, если монитор не включается?","Экран EVA PRO черный и не запускается","На RSM2 нет питания"],"rp2-no-orange":["Что делать, если на внешнем блоке не горит оранжевый индикатор?","На репитере не горит оранжевая лампочка","RP2 не показывает питание"],"rp2-no-blue":["Что делать, если внешний блок не принимает данные (синий индикатор не мигает)?","На репитере не мигает синяя лампочка","RP2 не видит колесные датчики"],"dashes":["Почему на мониторе прочерки вместо давления?","На экране вместо давления тире","Вместо показаний стоят тире","Пропали данные с колеса"],"pressure":["Что делать при сигнале Низкое давление?","Система предупреждает о низком давлении","Упало давление, можно ехать?"],"temperature":["Что делать при сигнале Высокая температура больше 83 градусов?","Колесо нагрелось выше 83 градусов","Система показывает перегрев шины"],"cabinet":["Как пользоваться Личным кабинетом?","Как зарегистрироваться на lk.1eva.pro?","Как добавить машину в Личный кабинет?"],"cabinet-update-frequency":["Как часто обновляются данные в Личном кабинете?","Через сколько минут появляются новые данные в ЛК?","Почему в личном кабинете старая информация?"],"warranty":["Какой гарантийный срок на оборудование?","Сколько гарантия на датчики?","Какой срок гарантии у колесных модулей?"],"sealant":["Можно ли использовать герметик для шин?","Совместим ли антипрокол с датчиком?","Можно залить антипрокол?"],"heatmap":["Что такое Карта нагрева колес?","Почему колесо подсвечено оранжевым?","Для чего нужна тепловая карта шин?"]};
     const synonymGroups=[["репитер","ретранслятор","внешний блок","rp2"],["экран","дисплей","монитор","rsm2"],["колесный модуль","датчик","сенсор","s2"],["тире","прочерк","прочерки","нет данных"],["привязать","зарегистрировать","прописать","добавить","id"],["горит","светится","индикатор","лампочка","светодиод"],["перегрев","горячий","температура","нагрев"],["не включается","не запускается","не работает","черный экран","нет питания"],["личный кабинет","лк","lk"],["герметик","антипрокол","ремонтная жидкость"],["бортировать","шиномонтаж","монтаж шины"],["нагрузка","вес","взвешивание"]];
@@ -268,6 +270,157 @@
     function add(role,text,meta={}){const row=document.createElement("div");row.className=`message ${role}`;const content=`${role==="assistant"?`<div class="assistant-name">Эван · цифровой инженер EVA PRO</div>`:""}<div class="bubble ${meta.urgent?"urgent":""}">${format(text)}${meta.source?`<div class="source">Источник: ${escape(meta.source)}</div>`:""}${role==="assistant"&&meta.feedback?`<div class="feedback"><button data-feedback="yes">Да, помогло</button><button data-feedback="more">Нужен следующий шаг</button></div>`:""}</div>`;row.innerHTML=role==="assistant"?`<div class="avatar"><img src="${EVAN_ASSET}" alt=""></div><div>${content}</div>`:`${content}`;messages.appendChild(row);messages.scrollTop=messages.scrollHeight;return row}
     function welcome(){add("assistant","Здравствуйте! Меня зовут Эван. Я цифровой инженер технической поддержки EVA PRO. Расскажите, что произошло, обычными словами — я уточню только необходимые детали и помогу пройти проверку по шагам.",{source:"Официальная база знаний EVA PRO"})}
     function normalizeText(s){return s.toLowerCase().replace(/ё/g,"е").replace(/\beva[\s-]*pro\b/g,"ева про").replace(/\bevo[\s-]*pro\b/g,"ева про").replace(/[^a-zа-я0-9\s-]+/g," ").replace(/\s+/g," ").trim()}
+    // Расчёт по чек-листу: один независимый контур = один датчик.
+    const axleSource = "Чек-лист расчёта датчиков нагрузки EVA PRO";
+    const axleManWarning = "На тягаче MAN трубка воздушной магистрали не стандартного диаметра и для установки потребуются дополнительные фитинги, для подробной консультации обратитесь к нашему специалисту.";
+    let axleSession = null;
+    const axleRoles = /(?:тягач[а-я]*|полуприцеп[а-я]*|прицеп[а-я]*)/g;
+    function axleRoleParts(text) {
+      const result = {};
+      const clauses = text.toLowerCase().replace(/ё/g, "е").split(/[,;\n]+|\s+и\s+(?=(?:на\s+)?(?:тягач|полуприцеп|прицеп))/);
+      let lastKey = null;
+      for (const clause of clauses) {
+        const roles = [...clause.matchAll(axleRoles)];
+        if (!roles.length && lastKey) { result[lastKey] += "; " + clause; continue; }
+        roles.forEach((role, index) => {
+          const key = role[0].startsWith("тягач") ? "tractor" : "trailer";
+          const prefix = index === 0 ? clause.slice(0, role.index).trim() : "";
+          const content = clause.slice(role.index + role[0].length, roles[index + 1]?.index ?? clause.length).trim();
+          const value = (prefix ? prefix + " " : "") + content;
+          result[key] = (result[key] ? result[key] + "; " : "") + value;
+          lastKey = key;
+        });
+      }
+      return result;
+    }
+    function axleNumber(text) {
+      const tokens = normalizeText(text).split(" ");
+      const words = {ноль:0,нуль:0,нет:0,один:1,одна:1,одно:1,одну:1,одного:1,два:2,две:2,двух:2,три:3,трех:3,четыре:4,четырех:4,пять:5,пяти:5,шесть:6,шести:6};
+      // Число уровня / осей имеет приоритет над «нет» в ответе о раздельных сторонах.
+      for (const token of tokens) {
+        if (/^-\d+$/.test(token)) return Number(token);
+        if (/^\d+$/.test(token)) return Number(token);
+        if (token !== "нет" && Object.hasOwn(words, token)) return words[token];
+      }
+      return /(?:^|\s)(?:нет|без|отсутствуют|отсутствует)(?:\s|$)/.test(normalizeText(text)) ? 0 : null;
+    }
+    function axleSeparate(text) {
+      const q = normalizeText(text);
+      if (/(?:^|\s)(?:нет|не могут|не может|не отдельно|не раздельно|вместе|общий|общем|единый|одновременно)(?:\s|$)/.test(q)) return false;
+      if (/(?:^|\s)(?:да|отдельно|раздельно|независимо|независимых|независимые)(?:\s|$)/.test(q)) return true;
+      return null;
+    }
+    function axleQuestion(step) {
+      const solo = axleSession?.solo;
+      if (step === 1) return "Вопрос 1 из 3. Марка и модель тягача и полуприцепа?\n\nНапример: «Тягач — Ситрак C7H, полуприцеп — Грюнвальд». Если полуприцепа нет, укажите это.";
+      if (step === 2) return "Вопрос 2 из 3. Сколько уровней пола на тягаче" + (solo ? "?" : " и на полуприцепе?") + " Могут ли подушки на левой стороне накачиваться отдельно от правой?\n\nУкажите число и раздельность сторон" + (solo ? " для тягача." : " отдельно для тягача и полуприцепа.") + " Например: «Тягач — 2, стороны отдельно: да" + (solo ? "»." : "; полуприцеп — 1, стороны отдельно: нет».") + " Считаем именно независимые контуры: если две стороны уже учтены в числе 2, повторно их не прибавляем.";
+      return "Вопрос 3 из 3. Сколько подъёмных осей" + (solo ? " на тягаче?" : " на тягаче и на полуприцепе?") + "\n\n" + (solo ? "Укажите число на тягаче." : "Например: «Тягач — 0, полуприцеп — 1».") + " Если подъёмная ось работает в общем контуре с другими осями, отметьте это — повторно такой контур не считаем.";
+    }
+    function axleWantsCalculation(text) {
+      const q = normalizeText(text);
+      return /(?:нагруз|ls3s?)/.test(q) && /(?:сколько|количеств|расчет|рассчит|расчит|подобра|подбор|нужн|потреб|чек.?лист)/.test(q);
+    }
+    function axleReply(text) { return {answer:text,source:axleSource}; }
+    function axleUnits(count,one,few,many) {
+      const last=count%10,lastTwo=count%100;
+      return count+" "+(last===1&&lastTwo!==11?one:last>=2&&last<=4&&(lastTwo<12||lastTwo>14)?few:many);
+    }
+    function axleGetVehicles(text) {
+      let parts = axleRoleParts(text);
+      const solo = /(?:без\s+(?:полуприцепа|прицепа)|нет\s+(?:полуприцепа|прицепа)|(?:полуприцеп|прицеп)(?:а)?\s+(?:нет|отсутствует))/.test(normalizeText(text));
+      if (!parts.tractor && !parts.trailer) {
+        const pair = text.split(/[,;\n]|\s+и\s+/).map(value => value.trim()).filter(Boolean);
+        if (pair.length === 2) parts = {tractor:pair[0],trailer:pair[1]};
+      }
+      const clean = value => (value || "").replace(/^[\s:—–-]+|[\s:—–-]+$/g, "").trim();
+      const tractor = clean(parts.tractor), trailer = clean(parts.trailer);
+      const valid = value => !!value && /[a-zа-я]/i.test(value) && !/^(?:да|нет|не знаю|не помню|неизвестно|марка|модель)$/i.test(value);
+      return {tractor:valid(tractor)?tractor:null,trailer:valid(trailer)?trailer:null,solo};
+    }
+    function axleCounts(text, type) {
+      let parts = axleRoleParts(text);
+      const keys = axleSession.solo ? ["tractor"] : ["tractor","trailer"];
+      const normalized = normalizeText(text);
+      if (!Object.keys(parts).length && keys.length === 1) parts = {tractor:text};
+      if (!Object.keys(parts).length && /(?:обоих|обеих|везде|и там и там)/.test(normalized)) parts = {tractor:text,trailer:text};
+      if (!Object.keys(parts).length && type === "lifts" && /^(?:нет|нет подъемных осей|подъемных осей нет|без подъемных осей|0)$/.test(normalized)) parts = {tractor:"0",trailer:"0"};
+      const data = axleSession[type];
+      for (const key of keys) {
+        if (!parts[key]) continue;
+        let number = axleNumber(parts[key]);
+        if (type === "floors" && number === 0 && /нет/.test(parts[key]) && !/(?:^|\D)0(?:$|\D)/.test(parts[key])) number = null;
+        if (number !== null) data[key].count = Number.isInteger(number) && number >= (type === "floors" ? 1 : 0) && number <= 20 ? number : null;
+        const separate = axleSeparate(parts[key]);
+        if (type === "floors" && separate !== null) data[key].separate = separate;
+        if (type === "lifts") {
+          if (/(?:общ(?:ий|ем|его) контур|единый контур|без отдельного контура)/.test(normalizeText(parts[key]))) data[key].shared = true;
+          else if (separate === true) data[key].shared = false;
+        }
+      }
+      // Короткий ответ на уточнение допустим, только если остался один параметр.
+      if (!Object.keys(parts).length) {
+        const missingCounts = keys.filter(key => data[key].count === null);
+        let number = axleNumber(text);
+        if (type === "floors" && number === 0 && /нет/.test(normalized) && !/(?:^|\D)0(?:$|\D)/.test(normalized)) number = null;
+        if (missingCounts.length === 1 && number !== null && number >= (type === "floors" ? 1 : 0) && number <= 20) data[missingCounts[0]].count = number;
+        if (type === "floors") {
+          const missingSides = keys.filter(key => data[key].separate === null);
+          const separate = axleSeparate(text);
+          if (missingSides.length === 1 && separate !== null) data[missingSides[0]].separate = separate;
+        }
+      }
+      if (type === "floors") {
+        // Независимые контуры, указанные явно, уже учитывают раздельные стороны.
+        for (const key of keys) if (data[key].count !== null && data[key].separate === null && parts[key] && /независим/.test(normalizeText(parts[key]))) data[key].separate = data[key].count >= 2;
+      }
+      return keys;
+    }
+    function axleHandle(text) {
+      const q = normalizeText(text);
+      if (axleSession && /^(?:отмена|отменить|стоп|отменить расчет|отмена расчета)$/.test(q)) { axleSession = null; return axleReply("Расчёт отменён. Чтобы начать снова, нажмите «Сколько датчиков нагрузки нужно?»."); }
+      const wants = axleWantsCalculation(text);
+      if (wants && (!axleSession || /(?:заново|сначала|новый расчет)/.test(q))) {
+        axleSession = {step:1,tractor:null,trailer:null,solo:false,manWarned:false,floors:{tractor:{count:null,separate:null},trailer:{count:null,separate:null}},lifts:{tractor:{count:null,shared:false},trailer:{count:null,shared:false}}};
+        return axleReply("Рассчитаем по чек-листу. Основное правило: количество независимых контуров равно количеству датчиков.\n\n" + axleQuestion(1));
+      }
+      if (!axleSession) return null;
+      // Другой вопрос техподдержки не принимаем за ответ о конфигурации.
+      if (/^(?:как|где|почему|что означает|что делать)/.test(q) && /(?:rsm2|rp2|s2|монитор|репитер|индикатор|прошив|прочерк|температур|калибр)/.test(q) && !wants) return null;
+      if (axleSession.step === 1) {
+        const vehicle = axleGetVehicles(text);
+        if (!vehicle.tractor && !vehicle.trailer && !Object.keys(axleRoleParts(text)).length && /^[a-zа-я0-9\s.—–-]+$/i.test(text.trim()) && !/^(?:да|нет|не знаю|не помню|неизвестно|марка|модель)$/i.test(text.trim())) {
+          if (!axleSession.tractor) vehicle.tractor=text.trim();
+          else if (!axleSession.trailer) vehicle.trailer=text.trim();
+        }
+        if (vehicle.tractor) axleSession.tractor = vehicle.tractor;
+        if (vehicle.trailer) axleSession.trailer = vehicle.trailer;
+        if (vehicle.solo) {axleSession.solo=true;axleSession.trailer=null;}
+        // MAN проверяем только в марке тягача, не по всему сообщению.
+        let warning = "";
+        if (axleSession.tractor && /(?:^|[^a-zа-я])(?:man|ман)(?:$|[^a-zа-я])/.test(axleSession.tractor.toLowerCase()) && !/(?:не|кроме)\s+(?:man|ман)(?:$|[^a-zа-я])/.test(axleSession.tractor.toLowerCase()) && !axleSession.manWarned) {warning=axleManWarning+"\n\n";axleSession.manWarned=true;}
+        if (!axleSession.tractor || (!axleSession.trailer && !axleSession.solo)) return axleReply(warning+"Уточните марку и модель " + (!axleSession.tractor ? "тягача" : "полуприцепа") + ". Напишите «" + (!axleSession.tractor ? "Тягач" : "Полуприцеп") + " — марка и модель». Если полуприцепа нет, укажите «без полуприцепа».");
+        axleSession.step=2;
+        return axleReply(warning+axleQuestion(2));
+      }
+      if (axleSession.step === 2) {
+        const keys=axleCounts(text,"floors"),data=axleSession.floors;
+        const missingCount=keys.find(key=>data[key].count===null);
+        if(missingCount) return axleReply("Сколько независимо регулируемых уровней пола " + (missingCount==="tractor"?"на тягаче":"на полуприцепе") + "? Укажите число; для обычного общего контура — 1.");
+        const missingSides=keys.filter(key=>data[key].separate===null);
+        if(missingSides.length) return axleReply("Уточнение ко второму вопросу: могут ли подушки слева накачиваться отдельно от правых " + (missingSides.length===2?"на тягаче и на полуприцепе? Укажите для каждого: да или нет.":(missingSides[0]==="tractor"?"на тягаче":"на полуприцепе")+"? Ответьте да или нет.") );
+        axleSession.step=3;return axleReply(axleQuestion(3));
+      }
+      const keys=axleCounts(text,"lifts"),missing=keys.find(key=>axleSession.lifts[key].count===null);
+      if(missing) return axleReply("Сколько подъёмных осей " + (missing==="tractor"?"на тягаче":"на полуприцепе") + "? Укажите число или 0, если их нет.");
+      const results=keys.map(key=>{const floor=axleSession.floors[key],lift=axleSession.lifts[key];const base=Math.max(floor.count,floor.separate?2:1),extra=lift.shared?0:lift.count;return {key,base,extra,count:base+extra,lift};});
+      const total=results.reduce((sum,item)=>sum+item.count,0);
+      const vehicleNames=results.map(item=>(item.key==="tractor"?"Тягач: ":"Полуприцеп: ")+axleSession[item.key]).join("\n");
+      const lines=results.map(item=>"• "+(item.key==="tractor"?"Тягач":"Полуприцеп")+": "+axleUnits(item.base,"контур","контура","контуров")+" уровня пола + "+axleUnits(item.extra,"контур","контура","контуров")+" подъёмных осей = **"+axleUnits(item.count,"датчик","датчика","датчиков")+"**.").join("\n");
+      const assumed=results.some(item=>item.extra>0);
+      const answer="**Предварительный расчёт**\n\n"+vehicleNames+"\n\n"+lines+"\n\n**Итого: "+axleUnits(total,"датчик","датчика","датчиков")+(axleSession.solo?" на тягач":" на сцепку")+".**\n\nОсновное правило: один независимый контур — один датчик. Раздельные левая и правая стороны учитываются в основных контурах без повторного прибавления."+(assumed?"\n\nДля предварительного расчёта каждая указанная подъёмная ось принята за отдельный дополнительный контур. Если оси работают в общем контуре, нужно пересчитать по фактической схеме пневмоподвески.":"")+"\n\nОкончательное количество подтвердит специалист по схеме пневмоподвески. Для другого автомобиля нажмите «Сколько датчиков нагрузки нужно?» и пройдите вопросы заново.";
+      axleSession=null;return axleReply(answer);
+    }
+
     const stopWords=new Set(["а","без","бы","в","во","вот","где","да","для","до","если","же","за","зачем","и","из","или","как","какая","какие","какой","когда","который","куда","ли","мне","можно","на","над","не","но","о","об","от","по","под","почему","при","про","с","со","так","такое","то","у","что","это"]);
     const endings=["ываются","иваются","ается","яется","ится","ются","иями","ями","ами","ого","ему","ому","иях","ыми","ими","ать","ять","ить","еть","ий","ый","ой","ая","яя","ое","ее","ие","ые","ую","юю","ом","ем","им","ым","их","ых","ов","ев","ам","ям","ют","ут","ет","ит","ят","ах","ях","ы","и","а","я","у","ю","е","о"];
     function stemToken(token){const ending=endings.find(value=>token.length-value.length>=4&&token.endsWith(value));return ending?token.slice(0,-ending.length):token}
@@ -285,7 +438,7 @@
 
 После этого я дам конкретную последовательность проверки без лишних действий.`}
     function typing(){const row=document.createElement("div");row.className="message assistant";row.innerHTML=`<div class="avatar"><img src="${EVAN_ASSET}" alt=""></div><div><div class="assistant-name">Эван изучает вопрос</div><div class="bubble"><div class="typing"><i></i><i></i><i></i></div></div></div>`;messages.appendChild(row);messages.scrollTop=messages.scrollHeight;return row}
-    function ask(text){const q=text.trim();if(!q)return;add("user",q);history.push(q);input.value="";input.style.height="auto";const t=typing();setTimeout(()=>{t.remove();const e=find(q);if(e)add("assistant",e.answer,{source:e.source,urgent:e.urgent,feedback:true});else add("assistant",fallback(q),{source:"Алгоритм первичной диагностики EVA PRO",feedback:true})},520+Math.min(q.length*5,700))}
+    function ask(text){const q=text.trim();if(!q)return;add("user",q);history.push(q);input.value="";input.style.height="auto";const axle=axleHandle(q);if(axle){add("assistant",axle.answer,{source:axle.source});return}const t=typing();setTimeout(()=>{t.remove();const e=find(q);if(e)add("assistant",e.answer,{source:e.source,urgent:e.urgent,feedback:true});else add("assistant",fallback(q),{source:"Алгоритм первичной диагностики EVA PRO",feedback:true})},520+Math.min(q.length*5,700))}
     form.addEventListener("submit",e=>{e.preventDefault();ask(input.value)});input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});input.addEventListener("input",()=>{input.style.height="auto";input.style.height=Math.min(input.scrollHeight,130)+"px"});
     document.getElementById("quick").addEventListener("click",e=>{if(e.target.matches(".chip"))ask(e.target.textContent)});
     messages.addEventListener("click",e=>{const b=e.target.closest("[data-feedback]");if(!b)return;if(b.dataset.feedback==="yes"){b.parentElement.innerHTML='<span style="color:#77dba2;font-size:11px">Спасибо. Рад, что помог.</span>'}else{ask("Мне нужен следующий шаг по этой проблеме")}})
